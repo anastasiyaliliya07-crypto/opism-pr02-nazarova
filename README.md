@@ -189,26 +189,45 @@ curl -v --http1.1 http://arin.net/ -o /dev/null
 
 ### Завдання A.6. Запит через захищене з'єднання
 
-**Ресурс, на якому виконано завдання:** <власний домен / `iana.org`>
+**Ресурс, на якому виконано завдання:** <власний домен: `arin.net`>
 
-**Підстава для використання резервного ресурсу (заповнюють за потреби):**
+**Підстава для використання резервного ресурсу (заповнюють за потреби):* - *
 
 **Команда:**
 
 ```
-<текст команди>
+openssl s_client -connect arin.net:443 -servername arin.net -crlf -quiet
 ```
 
 **Набраний запит:**
 
 ```
-<текст запиту>
+GET / HTTP/1.1
+Host: arin.net
+Connection: close
 ```
 
 **Вивід:**
 
 ```
-<повний вивід>
+HTTP/1.1 301 Moved Permanently
+Server: nginx
+Date: Sun, 04 Oct 2026 14:41:27 GMT
+Content-Type: text/html
+Content-Length: 162
+Connection: close
+Location: https://www.arin.net/
+Strict-Transport-Security: max-age=32140800; includeSubDomains
+X-Frame-Options: SAMEORIGIN
+
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+40E7A1524D7F0000:error:0A000126:SSL routines:ssl3_read_n:unexpected eof while reading:../ssl/record/rec_layer_s3.c:316:
 ```
 
 ---
