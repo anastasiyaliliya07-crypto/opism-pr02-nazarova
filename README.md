@@ -128,18 +128,26 @@ Content-Length: 0
 **Команда:**
 
 ```
-<текст команди>
+printf 'GET /opism-pr02-12345 HTTP/1.1\r\nHost: arin.net\r\n\r\nGET / HTTP/1.1\r\nHost: arin.net\r\nConnection: close\r\n\r\n' | nc -C arin.net 80
 ```
 
 **Вивід:**
 
 ```
-<повний вивід>
+HTTP/1.0 302 Moved Temporarily
+Location: https://arin.net/opism-pr02-12345
+Connection: Keep-Alive
+Content-Length: 0
+
+HTTP/1.0 302 Moved Temporarily
+Location: https://arin.net/
+Connection: Keep-Alive
+Content-Length: 0
 ```
 
-**Кількість отриманих відповідей:**
+**Кількість отриманих відповідей:*2*
 
-**Коди стану отриманих відповідей:**
+**Коди стану отриманих відповідей:*302 для обох відповідей*
 
 ---
 
