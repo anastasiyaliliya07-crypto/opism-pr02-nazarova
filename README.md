@@ -156,13 +156,33 @@ Content-Length: 0
 **Команда:**
 
 ```
-<текст команди>
+curl -v --http1.1 http://arin.net/ -o /dev/null
 ```
 
 **Вивід:**
 
 ```
-<повний вивід>
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host arin.net:80 was resolved.
+* IPv6: 2001:500:4:201::47, 2620:d0:6000:502::47
+* IPv4: 192.149.252.47, 199.43.0.47
+*   Trying 192.149.252.47:80...
+* Connected to arin.net (192.149.252.47) port 80
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0> GET / HTTP/1.1
+> Host: arin.net
+> User-Agent: curl/8.5.0
+> Accept: */*
+> 
+* HTTP 1.0, assume close after body
+< HTTP/1.0 302 Moved Temporarily
+< Location: https://arin.net/
+* HTTP/1.0 connection set to keep alive
+< Connection: Keep-Alive
+< Content-Length: 0
+< 
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+* Connection #0 to host arin.net left intact
 ```
 
 ---
