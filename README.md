@@ -11,7 +11,7 @@
 | Номер варіанта |16 |
 | Індивідуальний домен |arin.net |
 | «Чужий» домен для завдання A.3.1 (варіант ± 15) |fsf.org |
-| Середовище виконання | |
+| Середовище виконання |Windows (через Killercoda Ubuntu Playground) |
 | Дата виконання | |
 
 > Бланк заповнюють, не змінюючи структури розділів. Порожні заготовки блоків коду замінюють власними виводами. Позначки-підказки в кутових дужках вилучають.
@@ -25,19 +25,24 @@
 **Команда:**
 
 ```
-<текст команди>
+nc -C arin.net 80
 ```
 
 **Набраний запит:**
 
 ```
-<текст запиту, набраний з клавіатури, включно з порожнім рядком>
+GET / HTTP/1.1
+Host: arin.net
+Connection: close
 ```
 
 **Відповідь:**
 
 ```
-<повний текст відповіді>
+HTTP/1.0 302 Moved Temporarily
+Location: https://arin.net/
+Connection: close
+Content-Length: 0
 ```
 
 ---
@@ -47,13 +52,16 @@
 **Команда:**
 
 ```
-<текст команди>
+printf 'GET / HTTP/1.1\r\nConnection: close\r\n\r\n' | nc arin.net 80
 ```
 
 **Вивід:**
 
 ```
-<повний вивід>
+HTTP/1.0 302 Moved Temporarily
+Location: https:///
+Connection: close
+Content-Length: 0
 ```
 
 ---
@@ -65,13 +73,16 @@
 **Команда:**
 
 ```
-<текст команди>
+printf 'GET / HTTP/1.1\r\nHost: fsf.org\r\nConnection: close\r\n\r\n' | nc arin.net 80
 ```
 
 **Вивід:**
 
 ```
-<повний вивід>
+HTTP/1.0 302 Moved Temporarily
+Location: https://fsf.org/
+Connection: close
+Content-Length: 0
 ```
 
 #### A.3.2. Неіснуюче ім'я в полі `Host`
@@ -79,13 +90,16 @@
 **Команда:**
 
 ```
-<текст команди>
+printf 'GET / HTTP/1.1\r\nHost: opism-pr02.invalid\r\nConnection: close\r\n\r\n' | nc arin.net 80
 ```
 
 **Вивід:**
 
 ```
-<повний вивід>
+HTTP/1.0 302 Moved Temporarily
+Location: https://opism-pr02.invalid/
+Connection: close
+Content-Length: 0
 ```
 
 #### A.3.3. Запит без поля `Host` у версії 1.0
@@ -93,13 +107,16 @@
 **Команда:**
 
 ```
-<текст команди>
+printf 'GET / HTTP/1.0\r\n\r\n' | nc arin.net 80
 ```
 
 **Вивід:**
 
 ```
-<повний вивід>
+HTTP/1.0 302 Moved Temporarily
+Location: https:///
+Connection: close
+Content-Length: 0
 ```
 
 Зведення результатів наведено в **Додатку Д**.
