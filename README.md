@@ -296,9 +296,9 @@ X-Frame-Options: SAMEORIGIN
 
 | № | Рядок виводу | Джерело (номер завдання) |
 |---|---|---|
-| 1 | | |
-| 2 | | |
-| 3 | | |
+| 1 |`Strict-Transport-Security: max-age=32140800; includeSubDomains` |А6 |
+| 2 |`X-Frame-Options: SAMEORIGIN` |А6 |
+| 3 |`40E7A1524D7F0000:error:0A000126:SSL routines:ssl3_read_n:unexpected eof while reading:../ssl/record/rec_layer_s3.c:316:` |А6 |
 
 ---
 
